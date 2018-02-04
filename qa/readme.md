@@ -14,6 +14,7 @@ composer config -g repositories.packagist composer http://packagist.phpcomposer.
 ```
 ###测试地址
 http://qa.hdgua.com
+
 ###后台地址
 http://qa.hdgua.com
 admin@admin.com
