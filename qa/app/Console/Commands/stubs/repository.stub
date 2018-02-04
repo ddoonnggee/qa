@@ -1,0 +1,12 @@
+<?php namespace DummyNamespace;
+
+use DummyRootNamespaceModels\{{Model}};
+
+class DummyClass extends Repository {
+
+    public function __construct({{Model}} ${{model}})
+    {
+        $this->model = ${{model}};
+    }
+
+}

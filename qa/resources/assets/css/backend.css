@@ -1,0 +1,82 @@
+.auth{margin: 7% auto;}
+.capitalize{text-transform: capitalize;}
+.overflow{overflow: auto;}
+.content-header{overflow: auto;}
+.toolbars{float: right; width: 50%;text-align: right;display: none;}
+.fullscreen-toggle{font-size: 20px;}
+#map{width:100%; height: 400px;}
+.label-normal{font-weight: normal;}
+
+dl{margin: 5px 0;}
+th, td{vertical-align: middle !important;}
+.pagination{margin: 0;}
+
+@media only screen and (max-width: 600px) {
+    .content-header h1{float: none; width: 100%;}
+    .toolbars{float: none; width: 100%;margin-top: 0.5em;}
+    #map{width:100%; height: 200px;}
+}
+
+/*datatables bootstrap*/
+table.dataTable th.dt-left,
+table.dataTable td.dt-left {
+  text-align: left;
+}
+table.dataTable th.dt-center,
+table.dataTable td.dt-center,
+table.dataTable td.dataTables_empty {
+  text-align: center;
+}
+table.dataTable th.dt-right,
+table.dataTable td.dt-right {
+  text-align: right;
+}
+table.dataTable thead th.dt-head-left,
+table.dataTable thead td.dt-head-left,
+table.dataTable tfoot th.dt-head-left,
+table.dataTable tfoot td.dt-head-left {
+  text-align: left;
+}
+table.dataTable thead th.dt-head-center,
+table.dataTable thead td.dt-head-center,
+table.dataTable tfoot th.dt-head-center,
+table.dataTable tfoot td.dt-head-center {
+  text-align: center;
+}
+table.dataTable thead th.dt-head-right,
+table.dataTable thead td.dt-head-right,
+table.dataTable tfoot th.dt-head-right,
+table.dataTable tfoot td.dt-head-right {
+  text-align: right;
+}
+table.dataTable tbody th.dt-body-left,
+table.dataTable tbody td.dt-body-left {
+  text-align: left;
+}
+table.dataTable tbody th.dt-body-center,
+table.dataTable tbody td.dt-body-center {
+  text-align: center;
+}
+table.dataTable tbody th.dt-body-right,
+table.dataTable tbody td.dt-body-right {
+  text-align: right;
+}
+.sorting_disabled{
+	padding: 0px !important;
+}
+.dataTable{
+	width:100% !important;
+}
+/* search input field */
+input[type=search] {
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    transition: all 1s;
+}
+input[type=search]:focus {
+    width: 300px;
+    border-color: #6dcff6;
+    -webkit-box-shadow: 0 0 5px rgba(109,207,246,3);
+    -moz-box-shadow: 0 0 5px rgba(109,207,246,3);
+    box-shadow: 0 0 5px rgba(109,207,246,3);
+}

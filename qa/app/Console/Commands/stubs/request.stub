@@ -1,0 +1,18 @@
+<?php namespace DummyNamespace;
+
+use App\Http\Requests\Request;
+
+class DummyClass extends Request {
+
+    public function authorize()
+    {
+        return true;
+    }
+
+    public function rules()
+    {
+        return [
+            'name' => 'required'
+        ];
+    }
+}

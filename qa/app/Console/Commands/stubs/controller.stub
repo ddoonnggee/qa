@@ -1,0 +1,95 @@
+<?php namespace DummyNamespace;
+
+use Illuminate\Http\Request;
+use Kris\LaravelFormBuilder\FormBuilder;
+use DummyRootNamespaceHttp\Controllers\Controller;
+use DummyRootNamespaceRepositories\{{Model}}Repository as {{Model}};
+use DummyRootNamespaceHttp\Requests\{{Model}}Request;
+use Datatables;
+
+class DummyClass extends Controller {
+
+    private ${{model}};
+
+    public function __construct({{Model}} ${{model}})
+    {
+        $this->{{model}} = ${{model}};
+    }
+
+    public function index(Request $request)
+    {
+        if ($request->ajax()) {
+            return Datatables::of($this->{{model}}->all())
+            ->addColumn('action', function($model) { return $this->{{model}}->actionButttons($model);})
+            ->make(true);
+        }
+        $html = $this->{{model}}->columns();
+        return view('layout.partials.datatable',compact('html'));
+    }
+
+    public function create(Request $request, FormBuilder $formBuilder)
+    {
+        $form = $formBuilder->create('App\Forms\{{Model}}Form', [
+            'method' => 'POST',
+            'url' => route('admin.{{models}}.store')
+        ]);
+        return view($request->ajax()?'layout.partials.ajax_form':'layout.partials.form', compact('form'));
+    }
+
+    public function store({{Model}}Request $request)
+    {
+        ${{model}} = $this->{{model}}->save(null, $request->all());
+        if($request->ajax()){
+            return response()->json([
+                'status' => trans('messages.saved'),
+                'type' => 'success'
+            ]);
+        }        $route = ($request->get('task')=='apply') ? route('admin.{{models}}.edit', ${{model}}->id) : route('admin.{{models}}.index');
+        return redirect($route)->with([
+            'status' => trans('messages.saved'),
+            'type-status' => 'success'
+        ]);
+    }
+
+    public function show($id)
+    {
+        ${{model}} = $this->{{model}}->find($id);
+        return view('{{models}}.show', compact('{{model}}'));
+    }
+
+    public function edit($id, Request $request, FormBuilder $formBuilder)
+    {
+        ${{model}} = $this->{{model}}->find($id);
+        $form = $formBuilder->create('App\Forms\{{Model}}Form', [
+            'model' => ${{model}},
+            'method' => 'PUT',
+            'url' => route('admin.{{models}}.update', $id)
+        ]);
+        return view($request->ajax()?'layout.partials.ajax_form':'layout.partials.form', compact('form'));
+    }
+
+    public function update($id, {{Model}}Request $request)
+    {
+        $this->{{model}}->save($id, $request->all());
+        if($request->ajax()){
+            return response()->json([
+                'status' => trans('messages.saved'),
+                'type' => 'success'
+            ]);
+        }        $route = ($request->get('task')=='apply') ? route('admin.{{models}}.edit', $id) : route('admin.{{models}}.index');
+        return redirect($route)->with([
+            'status' => trans('messages.saved'),
+            'type-status' => 'success'
+        ]);
+    }
+
+    public function destroy($ids)
+    {
+        $this->{{model}}->deleteAll(explode(',', $ids));
+        return [
+            'status' => trans('messages.delete.success'),
+            'type' => 'success'
+        ];
+    }
+
+}
