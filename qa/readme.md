@@ -17,9 +17,9 @@ http://qa.hdgua.com
 
 ###后台地址
 http://qa.hdgua.com
-admin@admin.com
-adminadmin
+用户名：admin@admin.com
+密码：adminadmin
 
 ###初始化
-php artisan migrate
-php artisan db:seed
+创建数据库：php artisan migrate
+填充测试数据：php artisan db:seed
